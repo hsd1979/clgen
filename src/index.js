@@ -120,12 +120,12 @@ async function loadConfig() {
 
 function generateTitleMarkdown(latestTag, changelog) {
   // Generate markdown title
-  const today = new Date().toLocaleString('ja-JP', {
+  const today = new Date().toLocaleDateString('ja-JP', {
     timeZone: 'Asia/Tokyo',
     year: 'numeric',
     month: '2-digit',
     day: '2-digit'
-  });
+  }).replace(/\//g, '-');
   const newVersion = computeNewVersion(latestTag, changelog);
   return `## v${newVersion} (${today})`;
 }
